@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cancer Awareness & Support</title>
+
+  <!-- TAILWIND CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* Simple fade animation */
+    .fade {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header / Navbar -->
+  <header class="bg-purple-700 text-white py-4 shadow-lg">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
+      <h1 class="text-xl font-bold">Cancer Awareness & Support</h1>
+      <nav>
+        <a href="#contact" class="px-3 hover:underline">Contact</a>
+        <a href="#quotes" class="px-3 hover:underline">Quotes</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Landing Section -->
+  <section class="text-center py-16 px-4 fade">
+    <h2 class="text-3xl md:text-4xl font-bold text-purple-700">Together We Fight, Together We Heal</h2>
+    <p class="mt-4 text-lg max-w-2xl mx-auto">
+      Early detection, awareness, and emotional support can save millions of lives.  
+      Join us in spreading strength and hope.
+    </p>
+
+    <!-- Banner Image -->
+    <div class="mt-8">
+      <img 
+        src="https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=1200&q=60" 
+        alt="People holding hands symbolizing support for cancer awareness"
+        class="rounded-xl shadow-lg mx-auto w-full max-w-3xl object-cover h-64 md:h-96"
+      />
+    </div>
+  </section>
+
+  <!-- Quotes Section -->
+  <section id="quotes" class="bg-white py-16 px-4 border-t">
+    <div class="max-w-4xl mx-auto text-center fade">
+      <h3 class="text-2xl font-bold text-purple-700 mb-6">Real-Time Inspirational Quotes</h3>
+      <div class="min-h-[120px] flex items-center justify-center">
+        <p id="quoteText" class="text-xl italic text-gray-700">Loading inspirational quote...</p>
+      </div>
+      <div class="mt-2 text-sm text-gray-500" id="quoteStatus"></div>
+      <button 
+        id="newQuoteBtn"
+        class="mt-5 bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-lg shadow transition duration-200"
+      >
+        Get New Quote
+      </button>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="py-16 px-4 bg-gray-100">
+    <div class="max-w-4xl mx-auto fade">
+      <h3 class="text-2xl font-bold text-purple-700 text-center mb-8">Contact Us</h3>
+
+      <form class="bg-white p-8 rounded-xl shadow-lg max-w-xl mx-auto">
+        <label class="block mb-4">
+          <span class="font-semibold">Name</span>
+          <input id="name" type="text" class="w-full mt-2 p-2 border rounded focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="Your Name" required />
+        </label>
+
+        <label class="block mb-4">
+          <span class="font-semibold">Email</span>
+          <input id="email" type="email" class="w-full mt-2 p-2 border rounded focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="Your Email" required />
+        </label>
+
+        <label class="block mb-4">
+          <span class="font-semibold">Message</span>
+          <textarea id="message" class="w-full mt-2 p-2 border rounded focus:ring-2 focus:ring-purple-500 focus:outline-none" rows="4" placeholder="Write your message..." required></textarea>
+        </label>
+
+        <button
+          type="button"
+          onclick="alert('Your message has been received (demo)!')"
+          class="w-full bg-purple-700 hover:bg-purple-800 text-white py-2 rounded-lg shadow transition duration-200"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-4 bg-purple-700 text-white">
+    © 2025 Cancer Awareness & Support. Stay Strong.
+  </footer>
+
+  <!-- JavaScript for Quotes API -->
+  <script>
+    // Try multiple public APIs in sequence
+    const quoteAPIs = [
+      'https://api.quotable.io/random',
+      'https://api.freeapi.app/api/v1/public/quotes/quote/random',
+      'https://type.fit/api/quotes'
+    ];
+
+    let currentAPI = 0;
+
+    // Function to fetch quote from current API
+    async function fetchQuoteFromAPI(apiUrl) {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        
+        // Parse different API response formats
+        if (apiUrl.includes('quotable.io')) {
+          return {
+            text: data.content,
+            author: data.author
+          };
+        } else if (apiUrl.includes('freeapi.app')) {
+          return {
+            text: data.data.content,
+            author: data.data.author
+          };
+        } else if (apiUrl.includes('type.fit')) {
+          const quotes = data;
+          const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+          return {
+            text: randomQuote.text,
+            author: randomQuote.author || 'Unknown'
+          };
+        }
+      } catch (error) {
+        console.error(`Failed to fetch from ${apiUrl}:`, error);
+        return null;
+      }
+    }
+
+    // Main function to get quote
+    async function getQuote() {
+      const quoteElement = document.getElementById('quoteText');
+      const statusElement = document.getElementById('quoteStatus');
+      const button = document.getElementById('newQuoteBtn');
+      
+      // Disable button and show loading
+      button.disabled = true;
+      button.textContent = 'Loading...';
+      statusElement.textContent = 'Fetching quote...';
+      
+      let quote = null;
+      
+      // Try all APIs in order
+      for (let i = 0; i < quoteAPIs.length; i++) {
+        currentAPI = (currentAPI + 1) % quoteAPIs.length; // Rotate APIs
+        statusElement.textContent = `Trying API ${currentAPI + 1} of ${quoteAPIs.length}...`;
+        
+        quote = await fetchQuoteFromAPI(quoteAPIs[currentAPI]);
+        if (quote) {
+          statusElement.textContent = `Quote from API ${currentAPI + 1}`;
+          break;
+        }
+      }
+      
+      // If all APIs fail, use fallback
+      if (!quote) {
+        quote = {
+          text: "The human spirit is stronger than anything that can happen to it.",
+          author: "C.C. Scott"
+        };
+        statusElement.textContent = "Using inspirational quote";
+      }
+      
+      // Update display
+      quoteElement.textContent = `"${quote.text}" — ${quote.author}`;
+      
+      // Re-enable button
+      button.disabled = false;
+      button.textContent = 'Get New Quote';
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load first quote
+      getQuote();
+      
+      // Add click event to button
+      document.getElementById('newQuoteBtn').addEventListener('click', getQuote);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
