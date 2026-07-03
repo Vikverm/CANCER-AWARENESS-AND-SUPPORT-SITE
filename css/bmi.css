@@ -1,0 +1,1178 @@
+/*====================================================
+            BMI CALCULATOR
+                PART 5B-1
+=====================================================*/
+
+/*==============================
+        MAIN SECTION
+==============================*/
+
+.bmi-section{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:120px auto;
+
+}
+
+.bmi-container{
+
+    display:grid;
+
+    grid-template-columns:340px 1fr;
+
+    gap:40px;
+
+    align-items:start;
+
+}
+
+/*==============================
+        INFO PANEL
+==============================*/
+
+.bmi-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.bmi-info-card{
+
+    background:#fff;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.bmi-info-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+.bmi-info-card i{
+
+    width:80px;
+
+    height:80px;
+
+    line-height:80px;
+
+    border-radius:50%;
+
+    font-size:36px;
+
+    color:#fff;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #ff758f
+    );
+
+    margin-bottom:20px;
+
+}
+
+.bmi-info-card h3{
+
+    color:var(--accent);
+
+    margin-bottom:15px;
+
+}
+
+.bmi-info-card p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+/*==============================
+        BMI CARD
+==============================*/
+
+.bmi-card{
+
+    background:#fff;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.bmi-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:rgba(230,57,70,.05);
+
+    top:-100px;
+
+    right:-100px;
+
+}
+
+.bmi-card h2{
+
+    text-align:center;
+
+    color:var(--accent);
+
+    margin-bottom:35px;
+
+}
+
+.bmi-card h2 i{
+
+    color:var(--primary);
+
+    margin-right:10px;
+
+}
+
+/*==============================
+        INPUT GROUP
+==============================*/
+
+.input-group{
+
+    margin-bottom:22px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+    color:var(--accent);
+
+}
+
+.input-group input,
+.input-group select{
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    border:2px solid #e5e7eb;
+
+    font-size:16px;
+
+    transition:.3s;
+
+    outline:none;
+
+}
+
+.input-group input:focus,
+.input-group select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 10px rgba(230,57,70,.15);
+
+}
+
+/*==============================
+        BUTTONS
+==============================*/
+
+.bmi-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.bmi-buttons button{
+
+    flex:1;
+
+}
+
+/*==============================
+        RESULT
+==============================*/
+
+.bmi-result{
+
+    margin-top:50px;
+
+    display:none;
+
+    animation:fadeBMI .5s ease;
+
+}
+
+.bmi-result.show{
+
+    display:block;
+
+}
+
+/*==============================
+        BMI CIRCLE
+==============================*/
+
+.bmi-circle{
+
+    position:relative;
+
+    width:220px;
+
+    height:220px;
+
+    margin:30px auto;
+
+}
+
+.bmi-circle svg{
+
+    transform:rotate(-90deg);
+
+}
+
+.circle-bg{
+
+    fill:none;
+
+    stroke:#ececec;
+
+    stroke-width:14;
+
+}
+
+.circle-progress{
+
+    fill:none;
+
+    stroke:var(--primary);
+
+    stroke-width:14;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:565;
+
+    stroke-dashoffset:565;
+
+    transition:1s ease;
+
+}
+
+.circle-text{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+}
+
+.circle-text h2{
+
+    font-size:42px;
+
+    color:var(--primary);
+
+    margin-bottom:8px;
+
+}
+
+.circle-text span{
+
+    color:#666;
+
+    font-weight:600;
+
+}
+
+/*==============================
+        STATUS
+==============================*/
+
+.bmi-status{
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+.bmi-status h2{
+
+    color:var(--accent);
+
+    margin-bottom:12px;
+
+}
+
+.bmi-status p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+/*==============================
+        STATS
+==============================*/
+
+.bmi-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+    margin-top:45px;
+
+}
+
+.stat-card{
+
+    background:#f8f9fa;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.stat-card i{
+
+    font-size:30px;
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.stat-card h4{
+
+    margin-bottom:10px;
+
+    color:var(--accent);
+
+}
+
+.stat-card span{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+/*==============================
+        ANIMATION
+==============================*/
+
+@keyframes fadeBMI{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==============================
+        RESPONSIVE
+==============================*/
+
+@media(max-width:992px){
+
+.bmi-container{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.bmi-buttons{
+
+    flex-direction:column;
+
+}
+
+.bmi-stats{
+
+    grid-template-columns:1fr;
+
+}
+
+.bmi-card{
+
+    padding:25px;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.bmi-card h2{
+
+    font-size:26px;
+
+}
+
+.circle-text h2{
+
+    font-size:34px;
+
+}
+
+}
+/*====================================================
+            BMI CALCULATOR
+                PART 5B-2A
+=====================================================*/
+
+/*==============================
+      HEALTH PROGRESS
+==============================*/
+
+.bmi-progress{
+
+    margin-top:45px;
+
+}
+
+.bmi-progress h3{
+
+    color:var(--accent);
+
+    margin-bottom:18px;
+
+    text-align:center;
+
+}
+
+.progress-bar-large{
+
+    width:100%;
+
+    height:22px;
+
+    background:#ececec;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+#bmiProgressFill{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        90deg,
+        #2ecc71,
+        #27ae60
+    );
+
+    transition:1s ease;
+
+}
+
+/*==============================
+        HEALTH TIPS
+==============================*/
+
+.health-tips{
+
+    margin-top:45px;
+
+    background:#f8f9fa;
+
+    border-left:6px solid var(--primary);
+
+    padding:30px;
+
+    border-radius:20px;
+
+}
+
+.health-tips h3{
+
+    color:var(--accent);
+
+    margin-bottom:20px;
+
+}
+
+.health-tips h3 i{
+
+    color:var(--primary);
+
+    margin-right:10px;
+
+}
+
+.health-tips ul{
+
+    padding-left:22px;
+
+}
+
+.health-tips li{
+
+    margin:15px 0;
+
+    color:#555;
+
+    line-height:1.8;
+
+}
+
+/*==============================
+      RESULT BUTTONS
+==============================*/
+
+.result-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+.result-buttons button{
+
+    flex:1;
+
+}
+
+/*==============================
+        BMI TABLE
+==============================*/
+
+.bmi-table{
+
+    margin-top:60px;
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+.bmi-table h3{
+
+    text-align:center;
+
+    color:var(--accent);
+
+    margin-bottom:25px;
+
+}
+
+.bmi-table table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.bmi-table th{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:18px;
+
+}
+
+.bmi-table td{
+
+    padding:18px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.bmi-table tr:hover{
+
+    background:#f8f9fa;
+
+}
+
+/*==============================
+      BMI CATEGORY COLORS
+==============================*/
+
+.underweight{
+
+    color:#3498db !important;
+
+}
+
+.normal{
+
+    color:#2ecc71 !important;
+
+}
+
+.overweight{
+
+    color:#f39c12 !important;
+
+}
+
+.obese{
+
+    color:#e74c3c !important;
+
+}
+
+/*==============================
+      BUTTON EFFECTS
+==============================*/
+
+.result-buttons .primary-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.result-buttons .secondary-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/*==============================
+      RESPONSIVE
+==============================*/
+
+@media(max-width:768px){
+
+.result-buttons{
+
+    flex-direction:column;
+
+}
+
+.health-tips{
+
+    padding:22px;
+
+}
+
+.bmi-table{
+
+    overflow-x:auto;
+
+}
+
+.bmi-table table{
+
+    min-width:500px;
+
+}
+
+}
+
+/*====================================================
+            BMI CALCULATOR
+                PART 5B-2B
+=====================================================*/
+
+/*==============================
+        MEDICAL NOTE
+==============================*/
+
+.bmi-note{
+
+    margin-top:50px;
+
+    background:linear-gradient(
+        135deg,
+        #457b9d,
+        #1d3557
+    );
+
+    color:#fff;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+.bmi-note i{
+
+    font-size:40px;
+
+    color:#ffd166;
+
+    margin-top:5px;
+
+}
+
+.bmi-note p{
+
+    line-height:1.9;
+
+    font-size:16px;
+
+}
+
+/*==============================
+      CIRCLE ANIMATION
+==============================*/
+
+.circle-progress{
+
+    transition:
+        stroke-dashoffset 1.2s ease,
+        stroke .5s ease;
+
+}
+
+/*==============================
+      RESULT CARD EFFECT
+==============================*/
+
+.bmi-result{
+
+    background:#fff;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+/*==============================
+      HOVER EFFECTS
+==============================*/
+
+.stat-card{
+
+    transition:.35s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px) scale(1.02);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+
+}
+
+.health-tips{
+
+    transition:.35s;
+
+}
+
+.health-tips:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.bmi-note{
+
+    transition:.35s;
+
+}
+
+.bmi-note:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/*==============================
+      BUTTON ANIMATION
+==============================*/
+
+.result-buttons button{
+
+    transition:.35s;
+
+}
+
+.result-buttons button:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/*==============================
+      SUCCESS FLASH
+==============================*/
+
+.success-animation{
+
+    animation:successPop .6s ease;
+
+}
+
+@keyframes successPop{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.85);
+
+    }
+
+    60%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/*==============================
+      CATEGORY BADGES
+==============================*/
+
+#bmiCategory{
+
+    display:inline-block;
+
+    padding:10px 25px;
+
+    border-radius:40px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-top:15px;
+
+}
+
+.badge-underweight{
+
+    background:#d6ecff;
+
+    color:#3498db;
+
+}
+
+.badge-normal{
+
+    background:#dff8e8;
+
+    color:#2ecc71;
+
+}
+
+.badge-overweight{
+
+    background:#fff3cd;
+
+    color:#e67e22;
+
+}
+
+.badge-obese{
+
+    background:#fde2e2;
+
+    color:#e74c3c;
+
+}
+
+/*==============================
+      DARK MODE
+==============================*/
+
+.dark-mode .bmi-card,
+.dark-mode .bmi-result,
+.dark-mode .bmi-info-card,
+.dark-mode .bmi-table{
+
+    background:#1e293b;
+
+}
+
+.dark-mode .stat-card{
+
+    background:#334155;
+
+}
+
+.dark-mode .input-group input,
+.dark-mode .input-group select{
+
+    background:#334155;
+
+    color:#fff;
+
+    border:2px solid #475569;
+
+}
+
+.dark-mode .input-group label{
+
+    color:#fff;
+
+}
+
+.dark-mode .health-tips{
+
+    background:#334155;
+
+    color:#e5e7eb;
+
+}
+
+.dark-mode .health-tips li{
+
+    color:#e5e7eb;
+
+}
+
+.dark-mode .bmi-table td{
+
+    color:#fff;
+
+    border-color:#475569;
+
+}
+
+.dark-mode .bmi-table tr:hover{
+
+    background:#334155;
+
+}
+
+.dark-mode .circle-bg{
+
+    stroke:#475569;
+
+}
+
+.dark-mode .circle-text span{
+
+    color:#cbd5e1;
+
+}
+
+.dark-mode .bmi-note{
+
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b
+    );
+
+}
+
+/*==============================
+      PRINT STYLE
+==============================*/
+
+@media print{
+
+body{
+
+    background:#fff;
+
+}
+
+header,
+footer,
+#topBtn,
+.navbar,
+.primary-btn,
+.secondary-btn{
+
+    display:none !important;
+
+}
+
+.bmi-card,
+.bmi-result{
+
+    box-shadow:none;
+
+}
+
+}
+
+/*==============================
+      RESPONSIVE
+==============================*/
+
+@media(max-width:768px){
+
+.bmi-note{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.bmi-note i{
+
+    margin:auto;
+
+}
+
+#bmiCategory{
+
+    font-size:20px;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.bmi-circle{
+
+    width:180px;
+
+    height:180px;
+
+}
+
+.bmi-circle svg{
+
+    width:180px;
+
+    height:180px;
+
+}
+
+.circle-text h2{
+
+    font-size:30px;
+
+}
+
+.bmi-note{
+
+    padding:25px;
+
+}
+
+}

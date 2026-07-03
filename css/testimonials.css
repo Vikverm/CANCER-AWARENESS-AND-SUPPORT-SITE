@@ -1,0 +1,686 @@
+/*====================================================
+            TESTIMONIALS
+                PART 7B-1
+=====================================================*/
+
+/*==============================
+        MAIN SECTION
+==============================*/
+
+.testimonials{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:120px auto;
+
+}
+
+/*==============================
+      SLIDER LAYOUT
+==============================*/
+
+.testimonial-slider{
+
+    display:grid;
+
+    grid-template-columns:70px 1fr 70px;
+
+    gap:30px;
+
+    align-items:center;
+
+    margin-top:60px;
+
+}
+
+.testimonial-wrapper{
+
+    overflow:hidden;
+
+    position:relative;
+
+    min-height:360px;
+
+}
+
+/*==============================
+      TESTIMONIAL CARD
+==============================*/
+
+.testimonial-card{
+
+    display:none;
+
+    background:#fff;
+
+    border-radius:30px;
+
+    padding:45px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+    animation:fadeSlide .6s ease;
+
+}
+
+.testimonial-card.active{
+
+    display:block;
+
+}
+
+/*==============================
+      TOP SECTION
+==============================*/
+
+.testimonial-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+}
+
+.testimonial-top img{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid var(--primary);
+
+}
+
+.testimonial-top h3{
+
+    color:var(--accent);
+
+    margin-bottom:8px;
+
+}
+
+.testimonial-top span{
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+/*==============================
+      STARS
+==============================*/
+
+.stars{
+
+    color:#FFD700;
+
+    font-size:24px;
+
+    margin-bottom:20px;
+
+    letter-spacing:4px;
+
+}
+
+/*==============================
+      PARAGRAPH
+==============================*/
+
+.testimonial-card p{
+
+    color:#555;
+
+    line-height:2;
+
+    font-size:17px;
+
+    font-style:italic;
+
+}
+
+/*==============================
+      BUTTONS
+==============================*/
+
+.slider-btn{
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #ff758f
+    );
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.slider-btn:hover{
+
+    transform:scale(1.1);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+
+}
+
+/*==============================
+      DOTS
+==============================*/
+
+.slider-dots{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:35px;
+
+}
+
+.dot{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:#d1d5db;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.dot.active{
+
+    width:34px;
+
+    border-radius:20px;
+
+    background:var(--primary);
+
+}
+
+/*==============================
+      ANIMATION
+==============================*/
+
+@keyframes fadeSlide{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==============================
+      HOVER EFFECT
+==============================*/
+
+.testimonial-card{
+
+    transition:.35s;
+
+}
+
+.testimonial-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.testimonial-top img{
+
+    transition:.35s;
+
+}
+
+.testimonial-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/*==============================
+      RESPONSIVE
+==============================*/
+
+@media(max-width:992px){
+
+.testimonial-slider{
+
+    grid-template-columns:1fr;
+
+}
+
+.slider-btn{
+
+    display:none;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.testimonial-card{
+
+    padding:30px;
+
+}
+
+.testimonial-top{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.testimonial-top img{
+
+    width:80px;
+
+    height:80px;
+
+}
+
+.stars{
+
+    text-align:center;
+
+}
+
+.testimonial-card p{
+
+    text-align:center;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.testimonial-card{
+
+    padding:22px;
+
+}
+
+.testimonial-top h3{
+
+    font-size:22px;
+
+}
+
+.stars{
+
+    font-size:20px;
+
+}
+
+.testimonial-card p{
+
+    font-size:15px;
+
+}
+
+}
+
+/*====================================================
+            TESTIMONIALS
+                PART 7B-2
+=====================================================*/
+
+/*==============================
+      DECORATIVE BACKGROUND
+==============================*/
+
+.testimonial-wrapper{
+
+    position:relative;
+
+}
+
+.testimonial-wrapper::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:rgba(230,57,70,.05);
+
+    top:-100px;
+
+    right:-80px;
+
+    z-index:-1;
+
+}
+
+.testimonial-wrapper::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(69,123,157,.05);
+
+    bottom:-70px;
+
+    left:-70px;
+
+    z-index:-1;
+
+}
+
+/*==============================
+      CARD BORDER EFFECT
+==============================*/
+
+.testimonial-card{
+
+    border-top:6px solid transparent;
+
+}
+
+.testimonial-card.active{
+
+    border-top:6px solid var(--primary);
+
+}
+
+/*==============================
+      QUOTATION ICON
+==============================*/
+
+.testimonial-card::before{
+
+    content:"\201C";
+
+    position:absolute;
+
+    top:20px;
+
+    right:35px;
+
+    font-size:80px;
+
+    color:rgba(230,57,70,.08);
+
+    font-family:Georgia, serif;
+
+}
+
+/*==============================
+      STAR ANIMATION
+==============================*/
+
+.stars{
+
+    animation:starGlow 2.5s infinite alternate;
+
+}
+
+@keyframes starGlow{
+
+    from{
+
+        opacity:.7;
+
+    }
+
+    to{
+
+        opacity:1;
+
+        text-shadow:0 0 12px gold;
+
+    }
+
+}
+
+/*==============================
+      IMAGE SHADOW
+==============================*/
+
+.testimonial-top img{
+
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
+
+}
+
+/*==============================
+      DOT ANIMATION
+==============================*/
+
+.dot{
+
+    transition:
+
+        width .35s,
+
+        background .35s,
+
+        transform .35s;
+
+}
+
+.dot:hover{
+
+    transform:scale(1.2);
+
+}
+
+/*==============================
+      BUTTON EFFECT
+==============================*/
+
+.slider-btn:active{
+
+    transform:scale(.92);
+
+}
+
+/*==============================
+      CARD SHADOW
+==============================*/
+
+.testimonial-card:hover{
+
+    box-shadow:0 25px 45px rgba(0,0,0,.15);
+
+}
+
+/*==============================
+      DARK MODE
+==============================*/
+
+.dark-mode .testimonial-card{
+
+    background:#1e293b;
+
+}
+
+.dark-mode .testimonial-top h3{
+
+    color:#fff;
+
+}
+
+.dark-mode .testimonial-top span{
+
+    color:#cbd5e1;
+
+}
+
+.dark-mode .testimonial-card p{
+
+    color:#e5e7eb;
+
+}
+
+.dark-mode .dot{
+
+    background:#475569;
+
+}
+
+.dark-mode .dot.active{
+
+    background:var(--primary);
+
+}
+
+.dark-mode .slider-btn{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #334155,
+
+        #1e293b
+
+    );
+
+}
+
+/*==============================
+      FLOAT ANIMATION
+==============================*/
+
+.testimonial-card{
+
+    animation:
+
+        fadeSlide .6s ease,
+
+        floatCard 5s ease-in-out infinite;
+
+}
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==============================
+      RESPONSIVE
+==============================*/
+
+@media(max-width:768px){
+
+.testimonial-wrapper{
+
+    min-height:auto;
+
+}
+
+.slider-dots{
+
+    margin-top:25px;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.testimonial-top img{
+
+    width:70px;
+
+    height:70px;
+
+}
+
+.slider-dots{
+
+    gap:8px;
+
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+}
+
+.dot.active{
+
+    width:28px;
+
+}
+
+}

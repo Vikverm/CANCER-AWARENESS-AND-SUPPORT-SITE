@@ -1,223 +1,2769 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cancer Awareness & Support</title>
 
-  <!-- TAILWIND CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <style>
-    /* Simple fade animation */
-    .fade {
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CancerCare+ | AI-Powered Cancer Awareness & Support</title>
+
+  <meta name="description"
+    content="CancerCare+ is a modern cancer awareness and support platform helping people learn about prevention, symptoms, treatment, and early detection.">
+
+  <!-- Google Font -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="css/modal.css">
+
+  <link rel="stylesheet" href="css/testimonials.css">
+
+  <link rel="stylesheet" href="css/faq.css">
+
+  <link rel="stylesheet" href="css/bmi.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <!-- Header / Navbar -->
-  <header class="bg-purple-700 text-white py-4 shadow-lg">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
-      <h1 class="text-xl font-bold">Cancer Awareness & Support</h1>
-      <nav>
-        <a href="#contact" class="px-3 hover:underline">Contact</a>
-        <a href="#quotes" class="px-3 hover:underline">Quotes</a>
-      </nav>
-    </div>
+  <!-- =======================================
+                PAGE LOADER
+    ======================================== -->
+
+  <div id="loader">
+
+    <div class="loader-circle"></div>
+
+    <h2>CancerCare+</h2>
+
+  </div>
+
+  <!-- =======================================
+            SCROLL PROGRESS BAR
+    ======================================== -->
+
+  <div id="progress-bar"></div>
+
+  <!-- =======================================
+                HEADER
+    ======================================== -->
+
+  <header>
+
+    <nav class="navbar">
+
+      <div class="logo">
+
+        <i class="fa-solid fa-heart-circle-check"></i>
+
+        <span>CancerCare+</span>
+
+      </div>
+
+      <ul class="nav-links">
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#about">About</a></li>
+
+        <li><a href="#types">Cancer Types</a></li>
+
+        <li><a href="#prevention">Prevention</a></li>
+
+        <li><a href="#treatment">Treatment</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
+
+      <div class="nav-buttons">
+
+        <button class="support-btn">
+
+          Get Support
+
+        </button>
+
+        <div class="menu-toggle">
+
+          <i class="fa-solid fa-bars"></i>
+
+        </div>
+
+      </div>
+
+    </nav>
+
   </header>
 
-  <!-- Landing Section -->
-  <section class="text-center py-16 px-4 fade">
-    <h2 class="text-3xl md:text-4xl font-bold text-purple-700">Together We Fight, Together We Heal</h2>
-    <p class="mt-4 text-lg max-w-2xl mx-auto">
-      Early detection, awareness, and emotional support can save millions of lives.  
-      Join us in spreading strength and hope.
-    </p>
+  <!-- =======================================
+                HERO SECTION
+    ======================================== -->
 
-    <!-- Banner Image -->
-    <div class="mt-8">
-      <img 
-        src="https://images.unsplash.com/photo-1604881991720-f91add269bed?auto=format&fit=crop&w=1200&q=60" 
-        alt="People holding hands symbolizing support for cancer awareness"
-        class="rounded-xl shadow-lg mx-auto w-full max-w-3xl object-cover h-64 md:h-96"
-      />
-    </div>
-  </section>
+  <section class="hero" id="home">
 
-  <!-- Quotes Section -->
-  <section id="quotes" class="bg-white py-16 px-4 border-t">
-    <div class="max-w-4xl mx-auto text-center fade">
-      <h3 class="text-2xl font-bold text-purple-700 mb-6">Real-Time Inspirational Quotes</h3>
-      <div class="min-h-[120px] flex items-center justify-center">
-        <p id="quoteText" class="text-xl italic text-gray-700">Loading inspirational quote...</p>
-      </div>
-      <div class="mt-2 text-sm text-gray-500" id="quoteStatus"></div>
-      <button 
-        id="newQuoteBtn"
-        class="mt-5 bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-lg shadow transition duration-200"
-      >
-        Get New Quote
-      </button>
-    </div>
-  </section>
+    <div class="hero-left">
 
-  <!-- Contact Form -->
-  <section id="contact" class="py-16 px-4 bg-gray-100">
-    <div class="max-w-4xl mx-auto fade">
-      <h3 class="text-2xl font-bold text-purple-700 text-center mb-8">Contact Us</h3>
+      <h4>🎗 Together We Fight Cancer</h4>
 
-      <form class="bg-white p-8 rounded-xl shadow-lg max-w-xl mx-auto">
-        <label class="block mb-4">
-          <span class="font-semibold">Name</span>
-          <input id="name" type="text" class="w-full mt-2 p-2 border rounded focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="Your Name" required />
-        </label>
+      <h1>
 
-        <label class="block mb-4">
-          <span class="font-semibold">Email</span>
-          <input id="email" type="email" class="w-full mt-2 p-2 border rounded focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="Your Email" required />
-        </label>
+        Early Detection
 
-        <label class="block mb-4">
-          <span class="font-semibold">Message</span>
-          <textarea id="message" class="w-full mt-2 p-2 border rounded focus:ring-2 focus:ring-purple-500 focus:outline-none" rows="4" placeholder="Write your message..." required></textarea>
-        </label>
+        <span>Saves Lives</span>
 
-        <button
-          type="button"
-          onclick="alert('Your message has been received (demo)!')"
-          class="w-full bg-purple-700 hover:bg-purple-800 text-white py-2 rounded-lg shadow transition duration-200"
-        >
-          Submit
+      </h1>
+
+      <p>
+
+        CancerCare+ is an educational healthcare platform that
+        promotes cancer awareness, prevention, early diagnosis,
+        treatment information, and emotional support for patients
+        and families.
+
+      </p>
+
+      <div class="hero-buttons">
+
+        <button class="primary-btn">
+
+          Learn More
+
         </button>
-      </form>
+
+        <a href="#symptom" class="secondary-btn">
+          AI Risk Checker
+        </a>
+
+      </div>
+
+      <div class="hero-stats">
+
+        <div>
+
+          <h2>120+</h2>
+
+          <p>Articles</p>
+
+        </div>
+
+        <div>
+
+          <h2>95%</h2>
+
+          <p>Awareness</p>
+
+        </div>
+
+        <div>
+
+          <h2>24/7</h2>
+
+          <p>Support</p>
+
+        </div>
+
+      </div>
+
     </div>
+
+    <div class="hero-right">
+
+      <div class="hero-card">
+
+        <i class="fa-solid fa-ribbon"></i>
+
+        <h3>Hope Starts Today</h3>
+
+        <p>
+
+          Learn the warning signs,
+          reduce your risk,
+          and support those fighting cancer.
+
+        </p>
+
+      </div>
+
+    </div>
+
   </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-4 bg-purple-700 text-white">
-    © 2025 Cancer Awareness & Support. Stay Strong.
-  </footer>
+  <!-- =======================================
+          FEATURE HIGHLIGHTS
+    ======================================== -->
 
-  <!-- JavaScript for Quotes API -->
-  <script>
-    // Try multiple public APIs in sequence
-    const quoteAPIs = [
-      'https://api.quotable.io/random',
-      'https://api.freeapi.app/api/v1/public/quotes/quote/random',
-      'https://type.fit/api/quotes'
-    ];
+  <section class="features">
 
-    let currentAPI = 0;
+    <div class="feature-card">
 
-    // Function to fetch quote from current API
-    async function fetchQuoteFromAPI(apiUrl) {
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-        const data = await response.json();
-        
-        // Parse different API response formats
-        if (apiUrl.includes('quotable.io')) {
-          return {
-            text: data.content,
-            author: data.author
-          };
-        } else if (apiUrl.includes('freeapi.app')) {
-          return {
-            text: data.data.content,
-            author: data.data.author
-          };
-        } else if (apiUrl.includes('type.fit')) {
-          const quotes = data;
-          const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-          return {
-            text: randomQuote.text,
-            author: randomQuote.author || 'Unknown'
-          };
-        }
-      } catch (error) {
-        console.error(`Failed to fetch from ${apiUrl}:`, error);
-        return null;
-      }
-    }
+      <i class="fa-solid fa-stethoscope"></i>
 
-    // Main function to get quote
-    async function getQuote() {
-      const quoteElement = document.getElementById('quoteText');
-      const statusElement = document.getElementById('quoteStatus');
-      const button = document.getElementById('newQuoteBtn');
-      
-      // Disable button and show loading
-      button.disabled = true;
-      button.textContent = 'Loading...';
-      statusElement.textContent = 'Fetching quote...';
-      
-      let quote = null;
-      
-      // Try all APIs in order
-      for (let i = 0; i < quoteAPIs.length; i++) {
-        currentAPI = (currentAPI + 1) % quoteAPIs.length; // Rotate APIs
-        statusElement.textContent = `Trying API ${currentAPI + 1} of ${quoteAPIs.length}...`;
-        
-        quote = await fetchQuoteFromAPI(quoteAPIs[currentAPI]);
-        if (quote) {
-          statusElement.textContent = `Quote from API ${currentAPI + 1}`;
-          break;
-        }
-      }
-      
-      // If all APIs fail, use fallback
-      if (!quote) {
-        quote = {
-          text: "The human spirit is stronger than anything that can happen to it.",
-          author: "C.C. Scott"
-        };
-        statusElement.textContent = "Using inspirational quote";
-      }
-      
-      // Update display
-      quoteElement.textContent = `"${quote.text}" — ${quote.author}`;
-      
-      // Re-enable button
-      button.disabled = false;
-      button.textContent = 'Get New Quote';
-    }
+      <h3>Early Diagnosis</h3>
 
-    // Initialize when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load first quote
-      getQuote();
-      
-      // Add click event to button
-      document.getElementById('newQuoteBtn').addEventListener('click', getQuote);
-    });
+      <p>
 
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 20,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  </script>
+        Learn common symptoms and understand
+        when to seek medical advice.
+
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <i class="fa-solid fa-heart-pulse"></i>
+
+      <h3>Healthy Lifestyle</h3>
+
+      <p>
+
+        Discover prevention methods including
+        exercise, diet and healthy habits.
+
+      </p>
+
+    </div>
+
+    <div class="feature-card">
+
+      <i class="fa-solid fa-user-doctor"></i>
+
+      <h3>Expert Guidance</h3>
+
+      <p>
+
+        Reliable educational resources
+        based on trusted healthcare practices.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+            NEXT SECTIONS PLACEHOLDER
+    ======================================== -->
+
+  <!-- =======================================
+            ABOUT SECTION
+======================================= -->
+
+  <section class="about" id="about">
+
+    <div class="section-title">
+
+      <h4>About CancerCare+</h4>
+
+      <h2>Creating Awareness, Inspiring Hope</h2>
+
+      <p>
+        Our mission is to educate people about cancer, encourage early
+        detection, promote healthy lifestyles, and provide reliable
+        healthcare information for everyone.
+      </p>
+
+    </div>
+
+    <div class="about-container">
+
+      <!-- Left Side -->
+
+      <div class="about-image">
+
+        <div class="image-card">
+
+          <i class="fa-solid fa-heart-circle-check"></i>
+
+          <h3>Fight Cancer Together</h3>
+
+          <p>
+            Every small step toward awareness can save lives.
+            Together we can build a healthier future.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Right Side -->
+
+      <div class="about-content">
+
+        <div class="info-box">
+
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+
+          <div>
+
+            <h3>Early Detection</h3>
+
+            <p>
+              Detecting cancer in its early stages greatly improves
+              the chances of successful treatment and recovery.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="info-box">
+
+          <i class="fa-solid fa-apple-whole"></i>
+
+          <div>
+
+            <h3>Healthy Lifestyle</h3>
+
+            <p>
+              Eating nutritious food, exercising regularly,
+              avoiding tobacco, and limiting alcohol can reduce
+              the risk of many cancers.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="info-box">
+
+          <i class="fa-solid fa-user-doctor"></i>
+
+          <div>
+
+            <h3>Professional Guidance</h3>
+
+            <p>
+              Regular health checkups and timely medical advice
+              play an important role in cancer prevention.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="info-box">
+
+          <i class="fa-solid fa-hand-holding-heart"></i>
+
+          <div>
+
+            <h3>Community Support</h3>
+
+            <p>
+              Patients and families deserve emotional support,
+              trusted information, and access to healthcare
+              resources throughout their journey.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+            MISSION & VISION
+======================================= -->
+
+  <section class="mission">
+
+    <div class="mission-card">
+
+      <i class="fa-solid fa-bullseye"></i>
+
+      <h3>Our Mission</h3>
+
+      <p>
+        To spread awareness about cancer prevention,
+        encourage healthy living, and empower people
+        with trusted educational resources.
+      </p>
+
+    </div>
+
+    <div class="mission-card">
+
+      <i class="fa-solid fa-eye"></i>
+
+      <h3>Our Vision</h3>
+
+      <p>
+        A world where every individual understands
+        the importance of early detection, timely
+        treatment, and compassionate care.
+      </p>
+
+    </div>
+
+    <div class="mission-card">
+
+      <i class="fa-solid fa-globe"></i>
+
+      <h3>Our Goal</h3>
+
+      <p>
+        To build a modern digital platform that
+        educates, inspires hope, and supports
+        communities in the fight against cancer.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+            WHY EARLY DETECTION
+======================================= -->
+
+  <section class="importance">
+
+    <div class="importance-left">
+
+      <h2>
+
+        Why Early Detection Matters?
+
+      </h2>
+
+      <p>
+
+        Many cancers can be treated more successfully
+        when they are detected at an early stage.
+        Routine screening and awareness of warning
+        signs can improve health outcomes.
+
+      </p>
+
+      <ul>
+
+        <li>
+          <i class="fa-solid fa-circle-check"></i>
+          Better treatment outcomes
+        </li>
+
+        <li>
+          <i class="fa-solid fa-circle-check"></i>
+          Increased survival chances
+        </li>
+
+        <li>
+          <i class="fa-solid fa-circle-check"></i>
+          Lower treatment costs
+        </li>
+
+        <li>
+          <i class="fa-solid fa-circle-check"></i>
+          Improved quality of life
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="importance-right">
+
+      <div class="highlight-card">
+
+        <h2>70%</h2>
+
+        <p>
+
+          Many cancer risks can be reduced by
+          adopting healthy lifestyle habits and
+          participating in recommended screening
+          programs.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+            QUICK FACTS
+======================================= -->
+
+  <section class="facts">
+
+    <div class="fact-box">
+
+      <i class="fa-solid fa-heart"></i>
+
+      <h3>Healthy Living</h3>
+
+      <p>
+        Regular exercise and a balanced diet contribute
+        to overall health and can lower the risk of
+        several diseases.
+      </p>
+
+    </div>
+
+    <div class="fact-box">
+
+      <i class="fa-solid fa-smoking"></i>
+
+      <h3>Avoid Tobacco</h3>
+
+      <p>
+        Avoiding tobacco is one of the most effective
+        ways to reduce the risk of many cancers.
+      </p>
+
+    </div>
+
+    <div class="fact-box">
+
+      <i class="fa-solid fa-shield-heart"></i>
+
+      <h3>Regular Screening</h3>
+
+      <p>
+        Discuss age-appropriate cancer screening
+        recommendations with your healthcare provider.
+      </p>
+
+    </div>
+
+    <div class="fact-box">
+
+      <i class="fa-solid fa-people-group"></i>
+
+      <h3>Support Matters</h3>
+
+      <p>
+        Family, friends, and healthcare professionals
+        play a vital role in supporting patients.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+            CANCER TYPES
+======================================= -->
+
+  <section class="cancer-types" id="types">
+
+    <div class="section-title">
+
+      <h4>Common Cancer Types</h4>
+
+      <h2>Know the Most Common Types of Cancer</h2>
+
+      <p>
+        Learning about different types of cancer helps people recognize
+        symptoms early and seek timely medical advice.
+      </p>
+
+    </div>
+
+    <div class="types-container">
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-ribbon"></i>
+
+        <h3>Breast Cancer</h3>
+
+        <p>
+          One of the most common cancers affecting women.
+          Early screening improves treatment outcomes.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('breast')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-lungs"></i>
+
+        <h3>Lung Cancer</h3>
+
+        <p>
+          Smoking remains one of the major risk factors.
+          Quitting tobacco greatly reduces the risk.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('lung')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-droplet"></i>
+
+        <h3>Blood Cancer</h3>
+
+        <p>
+          Includes leukemia, lymphoma and myeloma.
+          Early diagnosis is essential.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('blood')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-brain"></i>
+
+        <h3>Brain Cancer</h3>
+
+        <p>
+          Affects the brain and nervous system.
+          Symptoms vary depending on the tumor location.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('brain')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-person"></i>
+
+        <h3>Skin Cancer</h3>
+
+        <p>
+          Protect your skin from excessive UV exposure and perform regular skin checks.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('skin')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-utensils"></i>
+
+        <h3>Stomach Cancer</h3>
+
+        <p>
+          Healthy eating habits and medical checkups help reduce risk.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('stomach')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-heart-pulse"></i>
+
+        <h3>Colon Cancer</h3>
+
+        <p>
+          Regular screening is important, especially for older adults.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('colon')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+      <div class="type-card">
+
+        <i class="fa-solid fa-user-doctor"></i>
+
+        <h3>Prostate Cancer</h3>
+
+        <p>
+          Common in older men and often detected through routine screening.
+        </p>
+
+        <button class="primary-btn" onclick="openCancerModal('prostate')">
+
+          Learn More
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+            PREVENTION
+======================================= -->
+
+  <section class="prevention" id="prevention">
+
+    <div class="section-title">
+
+      <h4>Prevention</h4>
+
+      <h2>Healthy Habits That Can Reduce Risk</h2>
+
+    </div>
+
+    <div class="prevention-container">
+
+      <div class="prevent-card">
+
+        <i class="fa-solid fa-ban-smoking"></i>
+
+        <h3>Quit Smoking</h3>
+
+        <p>
+          Avoid tobacco products to lower the risk of many cancers.
+        </p>
+
+      </div>
+
+      <div class="prevent-card">
+
+        <i class="fa-solid fa-apple-whole"></i>
+
+        <h3>Healthy Diet</h3>
+
+        <p>
+          Eat fruits, vegetables, whole grains and maintain a balanced diet.
+        </p>
+
+      </div>
+
+      <div class="prevent-card">
+
+        <i class="fa-solid fa-person-running"></i>
+
+        <h3>Exercise</h3>
+
+        <p>
+          Stay physically active for at least 30 minutes most days.
+        </p>
+
+      </div>
+
+      <div class="prevent-card">
+
+        <i class="fa-solid fa-notes-medical"></i>
+
+        <h3>Regular Checkups</h3>
+
+        <p>
+          Routine screening helps detect cancer at an earlier stage.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+            TREATMENT PROCESS
+======================================= -->
+
+  <section class="treatment" id="treatment">
+
+    <div class="section-title">
+
+      <h4>Treatment Journey</h4>
+
+      <h2>Understanding the Treatment Process</h2>
+
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <div class="circle">1</div>
+
+        <h3>Diagnosis</h3>
+
+        <p>
+          Medical tests help doctors identify the type and stage of cancer.
+        </p>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="circle">2</div>
+
+        <h3>Treatment Plan</h3>
+
+        <p>
+          Doctors recommend surgery, chemotherapy, radiation or other therapies.
+        </p>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="circle">3</div>
+
+        <h3>Recovery</h3>
+
+        <p>
+          Follow-up care, rehabilitation and emotional support are important.
+        </p>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="circle">4</div>
+
+        <h3>Healthy Future</h3>
+
+        <p>
+          Regular checkups and healthy habits support long-term well-being.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =======================================
+        CALL TO ACTION
+======================================= -->
+
+  <section class="cta">
+
+    <div class="cta-content">
+
+      <h2>
+        Together We Can Make a Difference
+      </h2>
+
+      <p>
+        Cancer awareness saves lives. Share knowledge, encourage regular
+        screenings and support those affected by cancer.
+      </p>
+
+      <button class="primary-btn">
+
+        Join Our Mission
+
+      </button>
+
+    </div>
+
+    <!-- =======================================
+        AI SYMPTOM CHECKER
+======================================= -->
+
+    <section class="symptom-checker" id="symptom">
+
+      <button class="secondary-btn" onclick="document.getElementById('symptom').scrollIntoView({
+    behavior:'smooth'
+})">
+
+        AI Risk Checker
+
+      </button>
+
+      <div class="section-title">
+
+        <h4>AI Symptom Checker</h4>
+
+        <h2>Check Your Cancer Risk (Demo)</h2>
+
+        <p>
+          Answer a few simple questions to receive an educational risk assessment.
+          This tool is for awareness only and is <strong>not a medical diagnosis.</strong>
+        </p>
+
+      </div>
+
+      <div class="checker-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="checker-info">
+
+          <div class="info-card">
+
+            <i class="fa-solid fa-shield-heart"></i>
+
+            <h3>Educational Tool</h3>
+
+            <p>
+
+              This AI-powered demo helps increase awareness about
+              possible warning signs of cancer.
+
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <i class="fa-solid fa-user-doctor"></i>
+
+            <h3>Professional Advice</h3>
+
+            <p>
+
+              Always consult a qualified healthcare professional
+              for diagnosis and treatment.
+
+            </p>
+
+          </div>
+
+          <div class="info-card">
+
+            <i class="fa-solid fa-heart-circle-check"></i>
+
+            <h3>Early Detection</h3>
+
+            <p>
+
+              Early diagnosis often improves treatment outcomes.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="checker-box">
+
+          <div class="progress-container">
+
+            <div class="progress-bar">
+
+              <div class="progress-fill" id="progressFill">
+
+              </div>
+
+            </div>
+
+            <span id="progressText">
+
+              Question 1 of 15
+
+            </span>
+
+          </div>
+
+          <!-- Question 1 -->
+
+          <div class="question active">
+
+            <h3>
+
+              Do you have a persistent cough lasting more than 3 weeks?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="2">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 2 -->
+
+          <div class="question">
+
+            <h3>
+
+              Have you experienced unexplained weight loss?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="2">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 3 -->
+
+          <div class="question">
+
+            <h3>
+
+              Do you smoke or use tobacco products?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="3">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 4 -->
+
+          <div class="question">
+
+            <h3>
+
+              Is there a history of cancer in your family?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="2">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 5 -->
+
+          <div class="question">
+
+            <h3>
+
+              Have you noticed a lump or swelling that does not go away?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="3">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 6 -->
+
+          <div class="question">
+
+            <h3>
+
+              Do you often feel extreme fatigue without a clear reason?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="2">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 7 -->
+
+          <div class="question">
+
+            <h3>
+
+              Do you frequently experience difficulty swallowing?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="2">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 8 -->
+
+          <div class="question">
+
+            <h3>
+
+              Have you noticed changes in a mole or skin lesion?
+
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="3">
+
+                Yes
+
+              </button>
+
+              <button class="answer-btn" data-score="0">
+
+                No
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 9 -->
+
+          <div class="question">
+
+            <h3>
+              Have you experienced unusual bleeding or discharge?
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="3">
+                Yes
+              </button>
+
+              <button class="answer-btn" data-score="0">
+                No
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 10 -->
+
+          <div class="question">
+
+            <h3>
+              Do you have a sore that does not heal?
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="2">
+                Yes
+              </button>
+
+              <button class="answer-btn" data-score="0">
+                No
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 11 -->
+
+          <div class="question">
+
+            <h3>
+              Have you noticed persistent pain without a clear cause?
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="2">
+                Yes
+              </button>
+
+              <button class="answer-btn" data-score="0">
+                No
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 12 -->
+
+          <div class="question">
+
+            <h3>
+              Do you frequently consume alcohol?
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="1">
+                Yes
+              </button>
+
+              <button class="answer-btn" data-score="0">
+                No
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 13 -->
+
+          <div class="question">
+
+            <h3>
+              Are you over 50 years of age?
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="1">
+                Yes
+              </button>
+
+              <button class="answer-btn" data-score="0">
+                No
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 14 -->
+
+          <div class="question">
+
+            <h3>
+              Do you exercise less than three days a week?
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="1">
+                Yes
+              </button>
+
+              <button class="answer-btn" data-score="0">
+                No
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Question 15 -->
+
+          <div class="question">
+
+            <h3>
+              Have you skipped a recommended health screening in the past two years?
+            </h3>
+
+            <div class="options">
+
+              <button class="answer-btn" data-score="1">
+                Yes
+              </button>
+
+              <button class="answer-btn" data-score="0">
+                No
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- Navigation -->
+
+          <div class="checker-buttons">
+
+            <button id="prevBtn" class="secondary-btn">
+
+              <i class="fa-solid fa-arrow-left"></i>
+
+              Previous
+
+            </button>
+
+            <button id="nextBtn" class="primary-btn">
+
+              Next
+
+              <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+          </div>
+
+          <!-- Result -->
+
+          <div id="resultBox" class="result-box">
+
+            <div class="result-icon">
+
+              <i class="fa-solid fa-heart-pulse"></i>
+
+            </div>
+
+            <h2 id="riskLevel">
+
+              Risk Level
+
+            </h2>
+
+            <div class="risk-meter">
+
+              <div class="risk-fill" id="riskFill">
+
+              </div>
+
+            </div>
+
+            <p id="riskScore">
+
+              Score : 0
+
+            </p>
+
+            <div id="recommendation" class="recommendation">
+
+              Recommendation will appear here.
+
+            </div>
+
+            <button id="restartBtn" class="primary-btn">
+
+              <i class="fa-solid fa-rotate-right"></i>
+
+              Restart Assessment
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================
+            MEDICAL DISCLAIMER
+======================================= -->
+
+    <!-- =======================================
+            BMI CALCULATOR
+======================================= -->
+
+    <section class="bmi-section" id="bmi">
+
+      <div class="section-title">
+
+        <h4>Health Calculator</h4>
+
+        <h2>BMI & Healthy Weight Calculator</h2>
+
+        <p>
+          Calculate your Body Mass Index (BMI) to understand your weight
+          category and receive personalized health recommendations.
+        </p>
+
+      </div>
+
+      <div class="bmi-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="bmi-info">
+
+          <div class="bmi-info-card">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            <h3>What is BMI?</h3>
+
+            <p>
+              Body Mass Index (BMI) is a simple measurement based on
+              your height and weight that estimates whether your body
+              weight is within a healthy range.
+            </p>
+
+          </div>
+
+          <div class="bmi-info-card">
+
+            <i class="fa-solid fa-dumbbell"></i>
+
+            <h3>Healthy Lifestyle</h3>
+
+            <p>
+              Regular exercise, balanced nutrition, and maintaining
+              a healthy weight contribute to better overall health.
+            </p>
+
+          </div>
+
+          <div class="bmi-info-card">
+
+            <i class="fa-solid fa-user-doctor"></i>
+
+            <h3>Medical Advice</h3>
+
+            <p>
+              BMI is only a screening tool. Consult a healthcare
+              professional for personalized medical guidance.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="bmi-card">
+
+          <h2>
+
+            <i class="fa-solid fa-calculator"></i>
+
+            Calculate Your BMI
+
+          </h2>
+
+          <!-- Height -->
+
+          <div class="input-group">
+
+            <label>
+
+              Height (cm)
+
+            </label>
+
+            <input type="number" id="height" placeholder="Example: 175" min="50" max="250">
+
+          </div>
+
+          <!-- Weight -->
+
+          <div class="input-group">
+
+            <label>
+
+              Weight (kg)
+
+            </label>
+
+            <input type="number" id="weight" placeholder="Example: 70" min="10" max="300">
+
+          </div>
+
+          <!-- Age -->
+
+          <div class="input-group">
+
+            <label>
+
+              Age
+
+            </label>
+
+            <input type="number" id="age" placeholder="Example: 24" min="1" max="120">
+
+          </div>
+
+          <!-- Gender -->
+
+          <div class="input-group">
+
+            <label>
+
+              Gender
+
+            </label>
+
+            <select id="gender">
+
+              <option value="">
+
+                Select Gender
+
+              </option>
+
+              <option value="Male">
+
+                Male
+
+              </option>
+
+              <option value="Female">
+
+                Female
+
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- Activity -->
+
+          <div class="input-group">
+
+            <label>
+
+              Activity Level
+
+            </label>
+
+            <select id="activity">
+
+              <option value="1.2">
+
+                Sedentary
+
+              </option>
+
+              <option value="1.375">
+
+                Light Exercise
+
+              </option>
+
+              <option value="1.55">
+
+                Moderate Exercise
+
+              </option>
+
+              <option value="1.725">
+
+                Heavy Exercise
+
+              </option>
+
+              <option value="1.9">
+
+                Athlete
+
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- Buttons -->
+
+          <div class="bmi-buttons">
+
+            <!-- =======================================
+            BMI RESULT
+======================================= -->
+
+            <div id="bmiResult" class="bmi-result">
+
+              <!-- Circular Meter -->
+
+              <div class="bmi-circle">
+
+                <svg width="220" height="220">
+
+                  <circle class="circle-bg" cx="110" cy="110" r="90">
+                  </circle>
+
+                  <circle class="circle-progress" id="circleProgress" cx="110" cy="110" r="90">
+                  </circle>
+
+                </svg>
+
+                <div class="circle-text">
+
+                  <h2 id="bmiValue">
+
+                    0.0
+
+                  </h2>
+
+                  <span>
+
+                    BMI
+
+                  </span>
+
+                </div>
+
+              </div>
+
+              <!-- BMI Category -->
+
+              <div class="bmi-status">
+
+                <h2 id="bmiCategory">
+
+                  Healthy
+
+                </h2>
+
+                <p id="healthMessage">
+
+                  Your health information will appear here.
+
+                </p>
+
+              </div>
+
+              <!-- Statistics -->
+
+              <div class="bmi-stats">
+
+                <div class="stat-card">
+
+                  <i class="fa-solid fa-weight-scale"></i>
+
+                  <h4>Ideal Weight</h4>
+
+                  <span id="idealWeight">
+
+                    --
+
+                  </span>
+
+                </div>
+
+                <div class="stat-card">
+
+                  <i class="fa-solid fa-fire"></i>
+
+                  <h4>Daily Calories</h4>
+
+                  <span id="dailyCalories">
+
+                    --
+
+                  </span>
+
+                </div>
+
+                <div class="stat-card">
+
+                  <i class="fa-solid fa-heart-pulse"></i>
+
+                  <h4>Health Score</h4>
+
+                  <span id="healthScore">
+
+                    --
+
+                  </span>
+
+                </div>
+
+              </div>
+
+              <!-- Progress -->
+
+              <div class="bmi-progress">
+
+                <h3>
+
+                  Health Progress
+
+                </h3>
+
+                <div class="progress-bar-large">
+
+                  <div id="bmiProgressFill">
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Health Tips -->
+
+              <div class="health-tips">
+
+                <h3>
+
+                  <i class="fa-solid fa-lightbulb"></i>
+
+                  Personalized Health Tips
+
+                </h3>
+
+                <ul id="tipsList">
+
+                  <li>
+
+                    Calculate your BMI to receive personalized recommendations.
+
+                  </li>
+
+                </ul>
+
+              </div>
+
+              <!-- Buttons -->
+
+              <div class="result-buttons">
+
+                <button id="downloadReport" class="primary-btn">
+
+                  <i class="fa-solid fa-download"></i>
+
+                  Download Report
+
+                </button>
+
+                <button id="printReport" class="secondary-btn">
+
+                  <i class="fa-solid fa-print"></i>
+
+                  Print
+
+                </button>
+
+              </div>
+
+            </div>
+
+            <!-- BMI Classification -->
+
+            <div class="bmi-table">
+
+              <h3>
+
+                BMI Classification
+
+              </h3>
+
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    <th>Category</th>
+
+                    <th>BMI Range</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  <tr>
+
+                    <td>Underweight</td>
+
+                    <td>Below 18.5</td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td>Healthy Weight</td>
+
+                    <td>18.5 - 24.9</td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td>Overweight</td>
+
+                    <td>25.0 - 29.9</td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td>Obesity</td>
+
+                    <td>30.0 and Above</td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+            <!-- Medical Note -->
+
+            <div class="bmi-note">
+
+              <i class="fa-solid fa-circle-info"></i>
+
+              <p>
+
+                BMI is a useful screening tool, but it does not directly measure body fat
+                or diagnose health conditions. Athletes, older adults, and individuals
+                with higher muscle mass may have BMI values that do not accurately reflect
+                their health. Always consult a healthcare professional for personalized
+                medical advice.
+
+              </p>
+
+            </div>
+
+            <button id="calculateBMI" class="primary-btn">
+
+              <i class="fa-solid fa-calculator"></i>
+
+              Calculate BMI
+
+            </button>
+
+            <button id="resetBMI" class="secondary-btn">
+
+              <i class="fa-solid fa-rotate-left"></i>
+
+              Reset
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="medical-disclaimer">
+
+      <div class="disclaimer-card">
+
+        <i class="fa-solid fa-circle-info"></i>
+
+        <h2>
+
+          Medical Disclaimer
+
+        </h2>
+
+        <p>
+
+          The AI Symptom Checker is provided solely for educational and
+          awareness purposes. It does not diagnose cancer or any other
+          medical condition and should never replace professional medical
+          advice, diagnosis, or treatment.
+
+        </p>
+
+        <p>
+
+          If you have persistent symptoms or concerns about your health,
+          consult a qualified healthcare professional as soon as possible.
+
+        </p>
+
+        <div class="disclaimer-footer">
+
+          <i class="fa-solid fa-user-doctor"></i>
+
+          Always consult your doctor for medical advice.
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </section>
+
+  <!-- =======================================
+            FAQ SECTION
+======================================= -->
+
+  <section class="faq-section" id="faq">
+
+    <div class="section-title">
+
+      <h4>Frequently Asked Questions</h4>
+
+      <h2>Cancer Awareness Knowledge Center</h2>
+
+      <p>
+
+        Find answers to the most commonly asked questions
+        about cancer awareness, prevention, diagnosis,
+        screening and treatment.
+
+      </p>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="faq-search">
+
+      <i class="fa-solid fa-magnifying-glass"></i>
+
+      <input type="text" id="faqSearch" placeholder="Search a question...">
+
+    </div>
+
+    <!-- FAQ Container -->
+
+    <div class="faq-container">
+
+      <!-- FAQ 1 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            What is cancer?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Cancer is a group of diseases where abnormal cells
+            grow uncontrollably and may spread to other parts
+            of the body.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 2 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Can cancer be prevented?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Many cancers can be prevented by avoiding tobacco,
+            maintaining a healthy diet, exercising regularly,
+            limiting alcohol and participating in recommended
+            screening programs.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 3 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            What are common warning signs?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Persistent cough, unexplained weight loss,
+            unusual bleeding, long-lasting fatigue,
+            changes in moles, lumps and persistent pain
+            should be evaluated by a healthcare professional.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 4 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Is early detection important?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Yes. Early detection often improves treatment
+            options and health outcomes.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 5 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Is smoking the biggest risk factor?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Tobacco use is one of the leading preventable
+            causes of cancer and increases the risk of
+            several cancer types.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 6 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Does family history increase cancer risk?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Some cancers have hereditary risk factors.
+            Discuss your family history with a healthcare
+            provider to determine whether additional
+            screening may be appropriate.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 7 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Can young people get cancer?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Yes. Although cancer becomes more common with age,
+            children, teenagers and young adults can also develop
+            certain types of cancer.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 8 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Does eating healthy eliminate cancer risk?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            No. A healthy diet may lower the risk of some cancers,
+            but it cannot completely eliminate the possibility of
+            developing cancer.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 9 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Are all tumors cancerous?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            No. Tumors can be benign (non-cancerous) or malignant
+            (cancerous). A medical evaluation is required to determine
+            the difference.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ 10 -->
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+
+          <h3>
+
+            Can exercise reduce cancer risk?
+
+          </h3>
+
+          <i class="fa-solid fa-plus"></i>
+
+        </div>
+
+        <div class="faq-answer">
+
+          <p>
+
+            Regular physical activity supports overall health and
+            is associated with a lower risk of several types of cancer.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- =========================
+            FAQ SUPPORT
+    ========================== -->
+
+    <div class="faq-support">
+
+      <div class="support-card">
+
+        <i class="fa-solid fa-headset"></i>
+
+        <h2>
+
+          Still Have Questions?
+
+        </h2>
+
+        <p>
+
+          Our educational platform provides reliable information
+          to help you better understand cancer awareness and
+          prevention.
+
+        </p>
+
+        <a href="#contact" class="primary-btn">
+
+          Contact Us
+
+        </a>
+
+      </div>
+
+      <div class="resources-card">
+
+        <h2>
+
+          Quick Resources
+
+        </h2>
+
+        <ul>
+
+          <li>
+
+            <i class="fa-solid fa-book-medical"></i>
+
+            Early Detection Guide
+
+          </li>
+
+          <li>
+
+            <i class="fa-solid fa-stethoscope"></i>
+
+            Screening Information
+
+          </li>
+
+          <li>
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            Healthy Lifestyle Tips
+
+          </li>
+
+          <li>
+
+            <i class="fa-solid fa-notes-medical"></i>
+
+            Treatment Overview
+
+          </li>
+
+          <li>
+
+            <i class="fa-solid fa-user-doctor"></i>
+
+            Doctor Consultation
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <!-- =========================
+        FEEDBACK SECTION
+    ========================== -->
+
+    <div class="faq-feedback">
+
+      <h2>
+
+        Was this information helpful?
+
+      </h2>
+
+      <div class="feedback-buttons">
+
+        <button class="yes-btn">
+
+          👍 Yes
+
+        </button>
+
+        <button class="no-btn">
+
+          👎 No
+
+        </button>
+
+      </div>
+
+      <p>
+
+        Your feedback helps us improve this educational platform.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  </div>
+
+  </section>
+
+  <!-- =======================================
+            TESTIMONIALS
+======================================= -->
+
+  <section class="testimonials" id="testimonials">
+
+    <div class="section-title">
+
+      <h4>Testimonials</h4>
+
+      <h2>Stories That Inspire Hope</h2>
+
+      <p>
+
+        The following testimonials are fictional examples for educational
+        and demonstration purposes. They illustrate the importance of
+        awareness, early detection, and emotional support.
+
+      </p>
+
+    </div>
+
+    <div class="testimonial-slider">
+
+      <button class="slider-btn prev-btn">
+
+        <i class="fa-solid fa-chevron-left"></i>
+
+      </button>
+
+      <div class="testimonial-wrapper">
+
+        <!-- Card 1 -->
+
+        <div class="testimonial-card active">
+
+          <div class="testimonial-top">
+
+            <img src="https://i.pravatar.cc/150?img=12" alt="Profile">
+
+            <div>
+
+              <h3>Sarah Johnson</h3>
+
+              <span>Breast Cancer Survivor (Sample)</span>
+
+            </div>
+
+          </div>
+
+          <div class="stars">
+
+            ★★★★★
+
+          </div>
+
+          <p>
+
+            Early screening gave me the opportunity to receive
+            treatment sooner. Awareness truly makes a difference.
+
+          </p>
+
+        </div>
+
+        <!-- Card 2 -->
+
+        <div class="testimonial-card">
+
+          <div class="testimonial-top">
+
+            <img src="https://i.pravatar.cc/150?img=33" alt="Profile">
+
+            <div>
+
+              <h3>Dr. Michael Lee</h3>
+
+              <span>Oncologist (Sample)</span>
+
+            </div>
+
+          </div>
+
+          <div class="stars">
+
+            ★★★★★
+
+          </div>
+
+          <p>
+
+            Educating communities about prevention and screening
+            is one of the most powerful tools we have.
+
+          </p>
+
+        </div>
+
+        <!-- Card 3 -->
+
+        <div class="testimonial-card">
+
+          <div class="testimonial-top">
+
+            <img src="https://i.pravatar.cc/150?img=45" alt="Profile">
+
+            <div>
+
+              <h3>Emily Carter</h3>
+
+              <span>Family Caregiver (Sample)</span>
+
+            </div>
+
+          </div>
+
+          <div class="stars">
+
+            ★★★★★
+
+          </div>
+
+          <p>
+
+            Support from healthcare professionals and loved ones
+            helped our family stay strong throughout treatment.
+
+          </p>
+
+        </div>
+
+        <!-- Card 4 -->
+
+        <div class="testimonial-card">
+
+          <div class="testimonial-top">
+
+            <img src="https://i.pravatar.cc/150?img=56" alt="Profile">
+
+            <div>
+
+              <h3>James Wilson</h3>
+
+              <span>Community Volunteer (Sample)</span>
+
+            </div>
+
+          </div>
+
+          <div class="stars">
+
+            ★★★★★
+
+          </div>
+
+          <p>
+
+            Community awareness campaigns encourage people to
+            learn about healthy habits and regular screenings.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <button class="slider-btn next-btn">
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </button>
+
+    </div>
+
+    <!-- Navigation Dots -->
+
+    <div class="slider-dots">
+
+      <span class="dot active"></span>
+
+      <span class="dot"></span>
+
+      <span class="dot"></span>
+
+      <span class="dot"></span>
+
+    </div>
+
+  </section>
+
+  <section id="contact" class="contact">
+
+    <div class="section-title">
+
+      <h4>Contact</h4>
+
+      <h2>Get in Touch</h2>
+
+      <p>
+        Have suggestions or feedback about this Cancer Awareness website?
+        We'd love to hear from you.
+      </p>
+
+    </div>
+
+    <div class="contact-container">
+
+      <form id="contactForm" class="contact-form">
+
+        <div class="input-row">
+
+          <input type="text" placeholder="Your Name" required>
+
+          <input type="email" placeholder="Your Email" required>
+
+        </div>
+
+        <textarea placeholder="Your Message" rows="6" required></textarea>
+
+        <button type="submit" class="primary-btn">
+
+          Send Message
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================
+            BACK TO TOP
+    ======================================== -->
+
+  <button id="topBtn">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+  </button>
+
+  <!-- ==========================================
+        CANCER INFORMATION MODAL
+=========================================== -->
+
+  <div class="cancer-modal" id="cancerModal">
+
+    <div class="modal-content">
+
+      <button class="close-modal" id="closeModal">
+        &times;
+      </button>
+
+      <div class="modal-header">
+
+        <div class="modal-icon" id="modalIcon">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+
+        <div>
+
+          <h2 id="modalTitle">
+            Cancer Information
+          </h2>
+
+          <p id="modalSubtitle">
+            Awareness Saves Lives
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="modal-body">
+
+        <h3>Overview</h3>
+
+        <p id="modalOverview"></p>
+
+        <h3>Common Symptoms</h3>
+
+        <ul id="modalSymptoms"></ul>
+
+        <h3>Risk Factors</h3>
+
+        <ul id="modalRisks"></ul>
+
+        <h3>Prevention</h3>
+
+        <ul id="modalPrevention"></ul>
+
+        <h3>Treatment</h3>
+
+        <p id="modalTreatment"></p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =======================================
+            JAVASCRIPT
+    ======================================== -->
+
+  <script src="js/testimonials.js"></script>
+
+  <script src="js/modal.js"></script>
+
+  <script src="js/symptom.js"></script>
+
+  <script src="js/faq.js"></script>
+
+  <script src="js/bmi.js"></script>
+
+  <script src="js/main.js"></script>
 
 </body>
-</html>
